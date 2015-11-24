@@ -6,6 +6,21 @@ var Menu = (function() {
 
 	this.atom = new Atom("lithium", "Menu");
 	this.atom.x = 200;
+	this.atom.y = 300;
+	
+	this.atom2 = new Atom("hydrogen", "Menu");
+	this.atom2.x = 200;
+	this.atom2.y = 210;
+	
+	this.atom1 = new Atom("lithium", "Menu");
+	this.atom1.x = 200;
+	this.atom1.y = 450;
+	
+	this.atom3 = new Atom("helium", "Menu");
+	this.atom3.x = 700;
+	this.atom3.y = 320;
+	
+
 
 	this.fadeEnable = (function(){
 
@@ -69,8 +84,6 @@ var Menu = (function() {
 
 	this.update = (function() {
 
-		neutrinoRain.update();
-
 		if(this.directionsAlpha >= 1)
 		{ this.updateDirections();}
 		
@@ -78,6 +91,8 @@ var Menu = (function() {
 		{ this.updateLevelSelection();}
 
 		this.fadeEnable();
+		if(this.menuAlpha >= 1)
+		{ this.drawMain(); neutrinoRain.update();}
 	});
 
 	this.updateDirections = (function(){
@@ -105,6 +120,19 @@ var Menu = (function() {
 
 		if(mouse.x > x && mouse.y > y && mouse.x < x + w && mouse.y < y + h)
 		{ graphics.drawCicle(x - 20, y + 25, 7.5, "BLUE"); if(mouse.click) {fade.active = true; fade.path = "menu";} }
+	
+		if(mouse.x > buttons.easyX && mouse.y > buttons.easyPivotY && mouse.x < buttons.easyX + buttons.easyWidth && mouse.y < buttons.easyPivotY + buttons.easyHeight)
+		  { graphics.drawCicle(buttons.easyX - 20, buttons.easyPivotY + 30,10, "GREEN") 
+			if(mouse.click) { fade.active = true; scene.type = "gameplay";}}
+		
+		if(mouse.x > buttons.meadiumX && mouse.y > buttons.meadiumPivotY && mouse.x < buttons.easyX + buttons.meadiumWidth && mouse.y < buttons.meadiumPivotY + buttons.meadiumHeight)
+		  { graphics.drawCicle(buttons.meadiumX - 20, buttons.meadiumPivotY + 30,10, "GREEN") 
+			if(mouse.click) { fade.active = true; scene.type = "gameplay";}}
+				
+		if(mouse.x > buttons.hardX && mouse.y > buttons.hardPivotY && mouse.x < buttons.hardX + buttons.hardWidth && mouse.y < buttons.hardPivotY + buttons.hardHeight)
+		  { graphics.drawCicle(buttons.hardX - 20, buttons.hardPivotY + 30,10, "GREEN") 
+			if(mouse.click) { fade.active = true; scene.type = "gameplay";}}
+		
 		
 		
 
@@ -114,7 +142,7 @@ var Menu = (function() {
 			graphics.drawText(225 , 100, "80px", "Directions", "blue");
 
 			if(this.menuAlpha <= 0)
-			{ this.atom.draw(); }
+			{ this.atom.draw();}
 	});
 	
 	this.drawLevelSelection = (function(){
@@ -123,9 +151,13 @@ var Menu = (function() {
 
 			if(this.menuAlpha <= 0)
 			{	
-				this.atom.draw();
+				this.atom1.draw();
+				this.atom2.draw();
+				this.atom3.draw(); 
 				
-			}	
+				
+			}
+		
 	});
 
 	this.drawMain = (function(){
@@ -140,30 +172,29 @@ var Menu = (function() {
 	});
 	
 	this.drawTextsLs = (function(){
-		graphics.drawText(450 , 310, "50px", "Easy", "Green");
-		graphics.drawText(450 , 375, "50px", "Medium", "Green");
-		graphics.drawText(450 , 440, "50px", "Hard", "Green");
+		graphics.drawText(buttons.easyX , buttons.easyY, "50px", "Easy", "Green");
+		graphics.drawText(buttons.meadiumX , buttons.meadiumY, "50px", "Medium", "Green");
+		graphics.drawText(buttons.hardX , buttons.hardY, "50px", "Hard", "Green");
 		
 	});
 
 	this.draw = (function() {
 
-		// Draw main Level Selection
+		
+		
+		
+			// Draw neutrinos rain
 			graphics.ctx.save();
-			graphics.ctx.globalAlpha = this.levelSelectionAlpha;
-			this.drawLevelSelection();
-			//graphics.drawCicle(600,(graphics.canvas.height / 2), 5, "#CC0000");
-			this.drawTextsLs();
-			graphics.ctx.restore();	
+			graphics.ctx.globalAlpha = this.menuAlpha;
+			
+			
+
 		
+			neutrinoRain.draw();
+			graphics.ctx.restore();
 		
-		// Draw neutrinos rain
-		graphics.ctx.save();
-		graphics.ctx.globalAlpha = this.menuAlpha;
-		this.drawMain();
-		neutrinoRain.draw();
-		graphics.ctx.restore();
-		
+			
+			
 			// Draw main menu
 			graphics.ctx.save();
 			graphics.ctx.globalAlpha = this.directionsAlpha;
@@ -172,6 +203,14 @@ var Menu = (function() {
 			graphics.drawCicle(600,(graphics.canvas.height / 2), 5, "#CC0000");
 			this.drawTexts();
 			graphics.ctx.restore();
+			
+			// Draw main Level Selection
+			graphics.ctx.save();
+			graphics.ctx.globalAlpha = this.levelSelectionAlpha;
+			this.drawLevelSelection();
+			//graphics.drawCicle(600,(graphics.canvas.height / 2), 5, "#CC0000");
+			this.drawTextsLs();
+			graphics.ctx.restore();	
 		
 		
 		

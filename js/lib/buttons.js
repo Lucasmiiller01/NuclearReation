@@ -6,6 +6,28 @@ var Buttons = (function(){
     this.playPivotY = this.playY - 50
     this.playWidth = 130;
     this.playHeight = 70;
+	
+	this.easyX = 350;
+  this.easyY = 230;
+
+    this.easyPivotY = this.easyY - 50
+    this.easyWidth = 110;
+    this.easyHeight = 50;
+	
+	this.meadiumX = 350;
+  this.meadiumY = 340;
+
+    this.meadiumPivotY = this.meadiumY - 50
+    this.meadiumWidth = 180;
+    this.meadiumHeight = 60;
+	
+	this.hardX = 350;
+  this.hardY = 450;
+
+    this.hardPivotY = this.hardY - 50
+    this.hardWidth = 115;
+    this.hardHeight = 55;
+	
 
   this.directionX = 200;
   this.directionY = 350;
@@ -31,6 +53,9 @@ var Buttons = (function(){
       graphics.drawText(this.playX, this.playY, "70px", "Play", "Green");
       graphics.drawText(this.directionX, this.directionY, "70px", "Instructions", "Green");
       graphics.drawText(this.creditsX, this.creditsY, "70px", "Credits", "Green");
+	  
+	
+		
 
       if(mouse.x > this.playX && mouse.y > this.playPivotY && mouse.x < this.playX + this.playWidth && mouse.y < this.playPivotY + this.playHeight)
       { graphics.drawCicle(this.playX - 20, this.playPivotY + 30,10, "GREEN") 
