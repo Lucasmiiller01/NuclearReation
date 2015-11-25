@@ -8,6 +8,7 @@ var Menu = function()
 	this.atom = new Atom("lithium", "Menu");
 	this.atom.x = 200;
 	this.atom.y = 300;
+	this.value;
 	
 	this.atom2 = new Atom("hydrogen", "Menu");
 	this.atom2.x = 200;
@@ -147,6 +148,7 @@ var Menu = function()
 				fade.active = true; fade.path = "game";
 			} 
 			atom.name = "hydrogen";atom.size = 42.5;
+			this.value = 0.001;
 		}
 		if(mouse.x > buttons.x - buttons.meadiumWidth/2 && mouse.y > buttons.meadiumPivotY && mouse.x < buttons.x + buttons.meadiumWidth/2 && mouse.y < buttons.meadiumPivotY + buttons.meadiumHeight)
 		{ 
@@ -156,6 +158,7 @@ var Menu = function()
 				fade.active = true; fade.path = "game";
 			}
 			atom.name = "helium";atom.size = 55;
+			this.value = 0.005;
 		}
 		if(mouse.x > buttons.x - buttons.hardWidth/2&& mouse.y > buttons.hardPivotY && mouse.x < buttons.x + buttons.hardWidth/2 && mouse.y < buttons.hardPivotY + buttons.hardHeight)
 		{ 
@@ -165,6 +168,7 @@ var Menu = function()
 				fade.active = true; fade.path = "game";
 			}
 			atom.name = "lithium";atom.size = 75;
+			this.value = 0.009;
 		}
 	}
 

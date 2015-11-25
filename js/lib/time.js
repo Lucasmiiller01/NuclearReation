@@ -19,7 +19,7 @@ var time = function()
 		graphics.drawText(300, 70, "50px", "Score:  " + Math.floor(this.score).toString(), "Green", "right");
 		for(var i = 0; i < neutrinoRain.number; i++)
 		{
-			neutrinoRain.neutrinos[i].speed += 0.01;
+			neutrinoRain.neutrinos[i].speed += menu.value;
 		}
 	}
 }
