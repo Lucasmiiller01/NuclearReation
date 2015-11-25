@@ -14,27 +14,30 @@
 <script src="js/lib/scene.js"></script>
 <script src="js/lib/background.js"></script>
 <script src="js/lib/hud.js"></script>
-<script src="js/lib/time.js"></script>
 <script src="js/lib/menu.js"></script>
 <script src="js/lib/buttons.js"></script>
+<script src="js/lib/time.js"></script>
 <script src="js/lib/fade.js"></script>
 <link rel="stylesheet" type="text/css" href="css/style.css"/>
 <script>
 
-	var draw = (function() {
-			manager.draw();
-	});
+	var draw = function() 
+	{
+		manager.draw();
+	}
 
-	var update = (function(){
-			manager.update();
-	});
+	var update = function()
+	{
+		manager.update();
+		mouse.click = false;
+	}
 
-	var loop = (function() {
-			
-			draw();
-			update();
-			setTimeout(loop, 30);
-	});
+	var loop = function() 
+	{
+		draw();
+		update();
+		setTimeout(loop, 30);
+	}
 
 	loop();
 

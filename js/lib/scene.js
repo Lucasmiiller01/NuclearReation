@@ -1,45 +1,39 @@
-var Scene = (function() {
+var Scene = function()
+{
+	this.type = "menu";
+	this.begin = false;
 
-	this.type = "menu"
-
-	this.update = (function() {
-
+	this.update = function() 
+	{
 		if(this.type === "menu")
 		{
 			menu.update();
 			sound.update();
 		}
-
 		if(this.type === "gameplay")
 		{
 			atom.update();
-			time.update();
 			sound.update();
 			neutrinoRain.update();
-			
+			if(this.begin)
+			{time.update();}
 		}
+	}
 
-	});
-
-	this.draw = (function() {
-
+	this.draw = function() 
+	{
 		if(this.type === "menu")
 		{
 			background.draw();
 			menu.draw();
 		}
-
 		if(this.type === "gameplay")
 		{
-			
 			background.draw();
 			atom.draw();
 			hud.draw();
 			neutrinoRain.draw();
-			
 		}
-
-	});
-
-});
+	}
+}
 var scene = new Scene();

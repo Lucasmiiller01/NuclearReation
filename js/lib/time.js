@@ -1,23 +1,26 @@
 var time = function()
 {
-	var start = (new Date()).getTime();
+	this.start = (new Date()).getTime();
 	
-		
-	function deltaTime()
+	this.deltaTime = function()
 	{
 		current = (new Date()).getTime();		
-		elapsed = current - start;
+		elapsed = current - this.start;
 		var delta = elapsed / 1000;			
 		return delta;
-			
 	}
-	
+	this.restartTime = function()
+	{
+		this.start = (new Date()).getTime();
+	}
 	this.update = function()
 	{
-		var delta = deltaTime();
-		graphics.drawText(20, 70, "50px", "Score :", "Green");
-		graphics.drawText(200, 70, "50px", Math.floor(delta).toString(), "Green");
-		
+		this.score = this.deltaTime();
+		graphics.drawText(300, 70, "50px", "Score:  " + Math.floor(this.score).toString(), "Green", "right");
+		for(var i = 0; i < neutrinoRain.number; i++)
+		{
+			neutrinoRain.neutrinos[i].speed += 0.01;
+		}
 	}
 }
 
