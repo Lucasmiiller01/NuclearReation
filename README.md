@@ -29,4 +29,4 @@ The user need evade from the neutrinos.
 - Atom: https://github.com/atom/atom
 
 # Copyright
-- You are freedom to use the source code for all you want, i only ask you to set the owing credits..
+- You are freedom to use the source code for all you want, i only ask you to set the owing credits.

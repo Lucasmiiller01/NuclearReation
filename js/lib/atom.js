@@ -37,7 +37,59 @@ var Atom = (function(name, type){
 	this.update = (function(){
 
 		if(this.type === "InGame")
-		{ this.move(); }
+		{ this.move(); this.collisions();}
+		
+		
+		
+
+	});
+	
+	this.collisions = (function(){
+
+		if(this.type === "InGame" && this.name == "hydrogen")
+		{ 
+			if(atom.x + 42.5 > graphics.canvas.width)
+			{ 
+					atom.x = graphics.canvas.width - 42.5;
+			}
+			else if(atom.x - 42.5 < 0) atom.x =  42.5;
+			if(atom.y + 42.5 > graphics.canvas.height)
+			{ 
+					atom.y = graphics.canvas.height - 42.5;
+			}
+			else if(atom.y - 42.5 < 0) atom.y =  42.5;
+		}
+		
+		if(this.type === "InGame" && this.name == "helium")
+		{ 
+			if(atom.x + 55 > graphics.canvas.width)
+			{ 
+					atom.x = graphics.canvas.width - 55;
+			}
+			else if(atom.x - 55 < 0) atom.x =  55;
+			if(atom.y + 55 > graphics.canvas.height)
+			{ 
+					atom.y = graphics.canvas.height - 55;
+			}
+			else if(atom.y - 55 < 0) atom.y =  55;
+		}
+		
+		if(this.type === "InGame" && this.name == "lithium")
+		{ 
+			if(atom.x + 75 > graphics.canvas.width)
+			{ 
+					atom.x = graphics.canvas.width - 75;
+			}
+			else if(atom.x - 75 < 0) atom.x =  75;
+			if(atom.y + 75 > graphics.canvas.height)
+			{ 
+					atom.y = graphics.canvas.height - 75;
+			}
+			else if(atom.y - 75 < 0) atom.y =  75;
+		}
+		
+		
+		
 
 	});
 	
