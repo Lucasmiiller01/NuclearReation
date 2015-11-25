@@ -3,6 +3,7 @@ var Menu = (function() {
 	this.menuAlpha = 1.0;
 	this.directionsAlpha = 0.0;
 	this.levelSelectionAlpha = 0.0;
+	this.gameAlph = 0.0;
 
 	this.atom = new Atom("lithium", "Menu");
 	this.atom.x = 200;
@@ -42,16 +43,19 @@ var Menu = (function() {
 					fade.active = false;
 				}
 		}
+		
 
 		if(fade.active && fade.path === "menu")
 		{
 			this.directionsAlpha -= 0.05;
 			this.levelSelectionAlpha -= 0.05;
+			this.gameAlph -= 0.05;
 
-			if(this.directionsAlpha <= 0 || this.levelSelectionAlpha <= 0)
+			if(this.directionsAlpha <= 0 || this.levelSelectionAlpha <= 0 || this.gameAlph <= 0)
 			{
 				this.directionsAlpha = 0;
 				this.levelSelectionAlpha = 0;
+				this.gameAlph = 0;
 				this.menuAlpha += 0.05;
 			}
 
@@ -59,9 +63,9 @@ var Menu = (function() {
 			{
 				this.menuAlpha = 1;
 				fade.active = false;
+				
 			}
 		}
-
 		
 		if(fade.active && fade.path === "levelSelection")
 		{
@@ -79,11 +83,33 @@ var Menu = (function() {
 					fade.active = false;
 				}
 		}
+		
+		if(fade.active && fade.path === "game")
+		{
+			
+				this.levelSelectionAlpha -= 0.05;
+				
+				if(this.levelSelectionAlpha <= 0)
+				{
+					this.levelSelectionAlpha = 0;
+					this.gameAlph += 0.05;
+				}
+
+				if(this.gameAlph  >= 1 && fade.active)
+				{
+					this.gameAlph = 1;
+					fade.active = false;
+					scene.type = "gameplay";
+					
+				}
+		}
 
 	});
 
 	this.update = (function() {
 
+		if(this.gameAlpha >= 1) 
+		
 		if(this.directionsAlpha >= 1)
 		{ this.updateDirections();}
 		
@@ -113,17 +139,17 @@ var Menu = (function() {
 
 			if(mouse.x > buttons.easyX && mouse.y > buttons.easyPivotY && mouse.x < buttons.easyX + buttons.easyWidth && mouse.y < buttons.easyPivotY + buttons.easyHeight)
 			  { graphics.drawCicle(buttons.easyX - 20, buttons.easyPivotY + 30,10, "GREEN") 
-				if(mouse.click) { fade.active = true; scene.type = "gameplay";} atom.name = "hydrogen";}
+				if(mouse.click) { fade.active = true; fade.path = "game";} atom.name = "hydrogen";}
 			
 			
 			if(mouse.x > buttons.meadiumX && mouse.y > buttons.meadiumPivotY && mouse.x < buttons.easyX + buttons.meadiumWidth && mouse.y < buttons.meadiumPivotY + buttons.meadiumHeight)
 			  { graphics.drawCicle(buttons.meadiumX - 20, buttons.meadiumPivotY + 30,10, "GREEN") 
-				if(mouse.click) { fade.active = true; scene.type = "gameplay";}atom.name = "helium";}
+				if(mouse.click) { fade.active = true; fade.path = "game";}atom.name = "helium";}
 					
 			
 			if(mouse.x > buttons.hardX && mouse.y > buttons.hardPivotY && mouse.x < buttons.hardX + buttons.hardWidth && mouse.y < buttons.hardPivotY + buttons.hardHeight)
 			  { graphics.drawCicle(buttons.hardX - 20, buttons.hardPivotY + 30,10, "GREEN") 
-				if(mouse.click) { fade.active = true; scene.type = "gameplay";}atom.name = "lithium";}
+				if(mouse.click) { fade.active = true; fade.path = "game";}atom.name = "lithium";}
 			
 	});
 

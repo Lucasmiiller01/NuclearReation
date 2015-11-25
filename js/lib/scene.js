@@ -13,8 +13,10 @@ var Scene = (function() {
 		if(this.type === "gameplay")
 		{
 			atom.update();
+			time.update();
 			sound.update();
 			neutrinoRain.update();
+			
 		}
 
 	});
@@ -29,10 +31,12 @@ var Scene = (function() {
 
 		if(this.type === "gameplay")
 		{
+			
 			background.draw();
 			atom.draw();
 			hud.draw();
 			neutrinoRain.draw();
+			
 		}
 
 	});

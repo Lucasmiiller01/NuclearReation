@@ -2,6 +2,7 @@ var Manager = (function() {
 
 	this.update = (function() {
 		scene.update();
+
 	});
 
 	this.draw = (function() {

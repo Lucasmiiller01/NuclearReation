@@ -88,17 +88,20 @@ var NeutrinoRain = (function(){
 				{
 					if(this.neutrinos[i].x > atom.x - 42.5 && this.neutrinos[i].y > atom.y - 42.5 && this.neutrinos[i].x + 5 < atom.x - 42.5 + 85 && this.neutrinos[i].y + 5 < atom.y - 42.5 + 85 && atom.name == "hydrogen")
 					{ 
-							scene.type = "menu";fade.active = true; fade.path = "menu";
+							fade.active = true; fade.path = "menu";
+							scene.type = "menu";
 					}
 					
 					else if(this.neutrinos[i].x > atom.x - 55 && this.neutrinos[i].y > atom.y - 55 && this.neutrinos[i].x + 5 < atom.x - 55 + 110 && this.neutrinos[i].y + 5 < atom.y - 55 + 110 && atom.name == "helium")
 					{ 
-							scene.type = "menu";fade.active = true; fade.path = "menu";
+							fade.active = true; fade.path = "menu";
+							scene.type = "menu";
 					}
 					
 					else if(this.neutrinos[i].x > atom.x - 75 && this.neutrinos[i].y > atom.y - 75 && this.neutrinos[i].x + 5 < atom.x - 75 + 145 && this.neutrinos[i].y + 5 < atom.y - 75 + 145 && atom.name == "lithium")
 					{ 
-							scene.type = "menu";fade.active = true; fade.path = "menu";
+							fade.active = true; fade.path = "menu";
+							scene.type = "menu";
 					}
 					
 				}
@@ -119,6 +122,7 @@ var NeutrinoRain = (function(){
 
 			for(var i = 0; i < 10; i++)
 			{ graphics.drawCicle(this.neutrinos[i].x,this.neutrinos[i].y, 5, "#CC0000");}
+			
 			
 			
 
