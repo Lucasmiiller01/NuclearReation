@@ -14,7 +14,7 @@ The user need evade from the neutrinos to prevent a burst
 	- Add Lose Menu
 	- Add Progressive Difficulty
 	      Obs: No picture or audio element beyond the classical music of Mozard, can be added to the project.
-				...
+				..
 # Preview
  ![alt tag](http://imgur.com/knaduNc.gif) ![alt tag](http://imgur.com/zO9PZ8r.gif)  ![alt tag](http://imgur.com/3jvqR8Y.gif)
  
